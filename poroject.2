@@ -1,0 +1,49 @@
+ساختار کلاس گره
+class Node {
+    int row, col, value;
+    Node next;
+
+    public Node(int row, int col, int value) {
+        this.row = row;
+        this.col = col;
+        this.value = value;
+        this.next = null;
+    }
+}
+ساختار کلاس ماتریس اسپارس
+class SparseMatrix {
+    Node start;
+
+    // ... سایر متدها ...
+}
+پیاده‌سازی عملیات
+1. تشکیل گره‌های لیست
+public void create(int[][] arr) {
+    for (int i = 0; i < arr.length; i++) {
+        for (int j = 0; j < arr[0].length; j++) {
+            if (arr[i][j] != 0) {
+                Node newNode = new Node(i, j, arr[i][j]);
+                // اضافه کردن گره جدید به لیست
+            }
+        }
+    }
+}
+2. جمع دو ماتریس اسپارس
+public SparseMatrix add(SparseMatrix m2) {
+    // ... کد برای ایجاد یک ماتریس جدید ...
+    Node p1 = this.start, p2 = m2.start;
+    while (p1 != null && p2 != null) {
+        // مقایسه سطر و ستون گره‌ها و اضافه کردن به ماتریس جدید
+    }
+    // اضافه کردن باقی‌مانده گره‌ها از هر دو لیست
+    return newMatrix;
+}
+3. تفاضل دو ماتریس اسپارس
+public SparseMatrix subtract(SparseMatrix m2) {
+    // ... کد مشابه با جمع، اما با تفریق مقادیر ...
+}
+4. ضرب دو ماتریس اسپارس
+public SparseMatrix multiply(SparseMatrix m2) {
+    // ... کد پیچیده‌تر برای ضرب ماتریس‌های اسپارس ...
+    // نیاز به سه حلقه تو در تو برای بررسی همه ترکیبات ممکن از سطرها و ستون‌ها
+}
