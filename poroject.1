@@ -1,0 +1,66 @@
+ساختار داده‌ها
+import java.util.ArrayList;
+import java.util.List;
+
+class Student {
+    int id;
+    String name;
+    String family;
+    String major;
+    int year;
+    int semester;
+    List<Course> courses;
+
+    // ... سازنده و متدهای get و set
+}
+
+class Course {
+    String name;
+    String code;
+    String dateTest;
+    String dateClass;
+
+    // ... سازنده و متدهای get و set
+}
+
+public class StudentManagementSystem {
+    List<Student> students = new ArrayList<>();
+}
+پیاده‌سازی عملیات
+
+1.ثبت نام دانشجو:
+public void registerStudent(Student student) {
+    students.add(student);
+    student.courses = new ArrayList<>(); // مقداردهی اولیه لیست دروس دانشجو
+}
+2. انتخاب واحد دانشجو:
+public void selectCourse(int studentId, Course course) {
+    Student student = findStudentById(studentId);
+    if (student != null) {
+        student.courses.add(course);
+    } else {
+        System.out.println("دانشجو یافت نشد.");
+    }
+}
+3. حذف و اضافه یک درس:
+public void removeCourse(int studentId, String courseCode) {
+    Student student = findStudentById(studentId);
+    if (student != null) {
+        student.courses.removeIf(c -> c.code.equals(courseCode));
+    }
+}
+4. حذف ترم دانشجو: برای حذف ترم، می‌توانیم تمام دروس یک ترم خاص را حذف کنیم.
+5. حذف یک دانشجو:
+public void removeStudent(int studentId) {
+    students.removeIf(s -> s.id == studentId);
+}
+نکات اضافی
+• جستجوی دانشجو:
+private Student findStudentById(int studentId) {
+    for (Student student : students) {
+        if (student.id == studentId) {
+            return student;
+        }
+    }
+    return null;
+}
